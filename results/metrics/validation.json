@@ -1,0 +1,34 @@
+{
+  "pathway_available": true,
+  "n_pathways": 49,
+  "pathway_pearson": 0.9940364163499872,
+  "pathway_spearman": 0.9826530612244897,
+  "pathway_pearson_per_perturbation": 0.44174354082375883,
+  "pathway_pearson_per_perturbation_median": 0.4694210742696104,
+  "frac_perturbations_positive": 0.9118753358409457,
+  "top_pathway_jaccard": 0.7777777777777778,
+  "n_perturbations_scored": 1861,
+  "stratified": [
+    {
+      "pert_type": "compound",
+      "n": 1230,
+      "gene_r_mean": 0.27106539327440343,
+      "gene_r_median": 0.24909482930444565,
+      "r2_mean": 0.06774077346298986
+    },
+    {
+      "pert_type": "orf",
+      "n": 543,
+      "gene_r_mean": 0.40505369860773893,
+      "gene_r_median": 0.43569978444588353,
+      "r2_mean": 0.177552903271119
+    },
+    {
+      "pert_type": "shrna",
+      "n": 88,
+      "gene_r_mean": 0.435270086944135,
+      "gene_r_median": 0.4521364238340281,
+      "r2_mean": 0.1955209798494764
+    }
+  ]
+}

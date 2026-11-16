@@ -1,0 +1,124 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>任务速查卡：细胞形态—转录组扰动响应预测</title>
+<!--[if gte mso 9]>
+<xml><w:WordDocument><w:View>Print</w:View><w:Zoom>100</w:Zoom></w:WordDocument></xml>
+<![endif]-->
+<style>
+  body{font-family:"微软雅黑","Microsoft YaHei",SimSun;font-size:10pt;line-height:1.5;color:#222;margin:1.8cm;}
+  h1{font-size:16pt;color:#1F3864;border-bottom:2px solid #1F3864;padding-bottom:5px;margin-bottom:4px;}
+  h2{font-size:11.5pt;color:#1F3864;margin:14px 0 4px;border-left:4px solid #1F3864;padding-left:7px;}
+  table{border-collapse:collapse;width:100%;margin:4px 0;font-size:9pt;}
+  th{background:#1F3864;color:#fff;border:1px solid #1F3864;padding:4px 6px;text-align:left;}
+  td{border:1px solid #9DB2CE;padding:4px 6px;vertical-align:top;}
+  tr:nth-child(even) td{background:#F2F6FA;}
+  .core{background:#FFF4E5;border-left:5px solid #E36C09;padding:8px 12px;margin:10px 0;font-size:10.5pt;}
+  .warn{background:#FDECEA;border-left:5px solid #C0392B;padding:7px 12px;margin:8px 0;font-size:9pt;}
+  .tip{background:#E8F5E9;border-left:5px solid #2E7D32;padding:7px 12px;margin:8px 0;font-size:9pt;}
+  code{background:#EEE;padding:1px 4px;font-family:Consolas,monospace;font-size:8.5pt;}
+  .flow{font-family:Consolas,monospace;background:#F7F9FC;border:1px solid #9DB2CE;padding:10px;font-size:8.5pt;line-height:1.45;}
+  ol,ul{margin:4px 0 4px 20px;padding:0;} li{margin-bottom:2px;}
+</style>
+</head>
+<body>
+
+<h1>任务速查卡：细胞形态—转录组扰动响应预测</h1>
+<p style="color:#666;font-size:8.5pt;margin-top:0;">3人 · 3周 · 结课作业级（流程完整 &gt; 指标惊艳）</p>
+
+<div class="core"><strong>一句话：</strong>造一条"看图猜基因"的流水线——从细胞荧光照片预测基因表达变化，并证明学到的是<strong>生物学</strong>而非<strong>拍照设备差异</strong>。</div>
+
+<h2>1. 四层理解</h2>
+<table>
+<tr><th style="width:16%">层级</th><th>说法</th></tr>
+<tr><td>5岁版</td><td>工厂吃药 → 照片变了、说明书也变了。<strong>任务：光看照片，猜说明书改了哪页。</strong></td></tr>
+<tr><td>青少年版</td><td>同一扰动两个视角：<strong>图像</strong>（Cell Painting五通道，上千形态特征）+ <strong>转录组</strong>（L1000，978 landmark基因）。学 f(形态)→基因表达，在未见扰动上验证。</td></tr>
+<tr><td>专家版</td><td>Rosetta配对数据 → 7智能体流水线 → Lasso/MLP基线 → 按扰动切分OOD评估 → ComBat/Harmony校正 → GSEA通路验证。</td></tr>
+<tr><td>一句话</td><td>把"照片"和"基因"译成同一种密码，从一种推另一种，且证明学到的是生物学不是实验记录本。</td></tr>
+</table>
+
+<h2>2. 术语 → 人话（★＝易错）</h2>
+<table>
+<tr><th style="width:28%">任务书原文</th><th>人话</th></tr>
+<tr><td>跨模态表示学习</td><td>让照片数字和基因数字进同一坐标系，可互相比较</td></tr>
+<tr><td>扰动编码</td><td>把"我给细胞做了什么"也变成数字喂给模型</td></tr>
+<tr><td>批次效应检测与校正</td><td>抹掉"换天/换试剂/换仪器"造成的假差异</td></tr>
+<tr><td>区分相关与因果</td><td>形态像 ≠ 基因被该靶点控制</td></tr>
+<tr><td>未见扰动性能</td><td>考没练过的新药/新基因</td></tr>
+<tr><td>基因表达相关系数</td><td>预测值与真实值像不像</td></tr>
+<tr><td>差异基因方向准确率</td><td>"升/降"方向猜对的比例</td></tr>
+<tr><td>通路一致性</td><td>预测的上下调基因是否落在同一已知通路上</td></tr>
+<tr><td>★批次分类准确率</td><td><strong>越低越好</strong>。接近随机猜（1÷批次数）＝批次信息被抹干净</td></tr>
+</table>
+
+<h2>3. 八概念速记（类比 / 失效 / 误区）</h2>
+<table>
+<tr><th style="width:13%">概念</th><th style="width:22%">一句话</th><th style="width:22%">类比</th><th style="width:21%">类比失效</th><th style="width:22%">误区</th></tr>
+<tr><td>Cell Painting</td><td>6染料染8细胞器，5通道拍照</td><td>彩色证件照+全身CT</td><td>染料互扰且有毒性</td><td>重分辨率；其实通道配准/曝光一致性更关键</td></tr>
+<tr><td>形态Profile</td><td>图→数字串，一扰动一向量</td><td>人脸→指纹编码</td><td>受密度、孔板边缘影响大</td><td>拿单细胞直接比；<strong>须先聚合到孔级/扰动级</strong></td></tr>
+<tr><td>L1000 / Landmark</td><td>测978基因推其余，覆盖82%变异</td><td>体检只查十几项推健康</td><td>部分值是算的，不是测的</td><td>用level-4；<strong>须用level-5签名</strong></td></tr>
+<tr><td>化合物/CRISPR/ORF</td><td>撒沙子 / 拆零件 / 装三份</td><td>药物多靶点，遗传为单点干预</td><td>基因有代偿；化合物也可能高选择性</td><td>以为三者等价；<strong>遗传扰动才是因果锚</strong></td></tr>
+<tr><td>跨模态预测</td><td>f(形态)→基因表达</td><td>看气色猜体检报告</td><td>气色不会导致血糖变——<strong>兄弟非父子</strong>，共享上游扰动</td><td>准了就称"形态决定表达"（相关性越界）</td></tr>
+<tr><td>表示学习</td><td>两模态压进同一空间，同扰动相邻</td><td>中英文→世界语坐标</td><td>无逐元素对应，只学统计相关</td><td>自训CNN/ViT；<strong>直接用预训练取特征</strong></td></tr>
+<tr><td>批次效应</td><td>技术噪声伪装成生物学</td><td>不同相机拍同病，模型学会"认医院"</td><td>批次常与条件混杂（某板全高剂量）</td><td>校正完就完事；<strong>须前后对照查过校正</strong></td></tr>
+<tr><td>相关 vs 因果</td><td>相关＝同扰动驱动；因果＝干预致结果</td><td>火警响+人跑 vs 你按铃+人跑</td><td>生物有反馈环路，箭头双向</td><td>要做完整因果推断；<strong>分层报告"哪类靶点匹配得上"即可</strong></td></tr>
+</table>
+
+<h2>4. 7智能体流水线</h2>
+<div class="flow">
+原图 →【1质控】→【2形态特征】→ <strong>X_morph</strong> ┐<br>
+基因 →【3转录组预处理】→ <strong>Y_expr</strong> ──┼→【5跨模态预测】→ 结果<br>
+扰动 →【4扰动编码】→ 扰动向量 ─────────┘　　　　↓<br>
+　　　　　　　　【6批次诊断】挑刺+校正（可回头否决2/5）↓<br>
+　　　　　　　　【7生物验证】通路 / GSEA
+</div>
+<div class="tip"><strong>铁律：</strong>所有表主键 <code>perturbation_id</code>，字段 <code>{perturbation_id, cell_line, timepoint, batch/plate, features...}</code>；改 schema 须先打招呼。</div>
+
+<h2>5. 三周节奏</h2>
+<table>
+<tr><th style="width:14%">周</th><th style="width:10%">天</th><th style="width:38%">动作</th><th style="width:38%">交付</th></tr>
+<tr><td>W1 地基</td><td>D1–7</td><td>下数据、定schema、跑通Lasso/MLP基线、出扰动覆盖表</td><td><code>X_morph</code>、<code>Y_expr</code>、基线数字</td></tr>
+<tr><td>W2 建模</td><td>D8–14</td><td>跨模态模型、扰动编码、批次诊断校正、OOD评估、消融</td><td>指标表 + 4张图</td></tr>
+<tr><td>W3 汇报</td><td>D15–21</td><td>GSEA、因果分层讨论、出图、报告与PPT、排练</td><td>报告 + slides + 复现脚本</td></tr>
+</table>
+<div class="warn"><strong>止损：</strong>① D7无对齐矩阵 → 全切Rosetta现成表；② D14未见扰动指标未出 → 只交基线+批次诊断，保叙事完整；③ <strong>D19冻结代码</strong>。</div>
+
+<h2>6. 三人分工</h2>
+<table>
+<tr><th style="width:15%">成员</th><th style="width:20%">主责agent</th><th style="width:35%">工作</th><th style="width:30%">交付</th></tr>
+<tr><td><strong>A 数据环境</strong></td><td>①质控 ②形态特征</td><td>数据/manifest；profile清洗（去低方差、高相关、blocklist）；孔级聚合；QC报告；环境与一键脚本</td><td><code>X_morph.parquet</code>、QC报告、<code>setup.sh</code><br><em>支援：帮C画图</em></td></tr>
+<tr><td><strong>B 转录组生物</strong></td><td>③转录组 ④扰动编码 ⑦验证</td><td>level-5签名清洗、landmark对齐；e-distance/grit滤弱扰动；RDKit化合物编码、基因编码；GSEA通路；<strong>写"相关vs因果"章节</strong></td><td><code>Y_expr.parquet</code>、编码表、富集图<br><em>支援：帮C写生物学讨论</em></td></tr>
+<tr><td><strong>C 建模集成</strong></td><td>⑤预测 ⑥批次诊断 编排</td><td>Lasso/MLP+进阶；<strong>按扰动切分</strong>OOD；UMAP着色+kNN/ARI量化；ComBat/Harmony；CrewAI串7 agent；指标表与图表；<strong>报告PPT主笔</strong></td><td>模型脚本、指标表、报告与slides<br><em>（最重，A/B各支援一项）</em></td></tr>
+</table>
+
+<h2>7. 技术栈</h2>
+<table>
+<tr><th style="width:20%">类别</th><th>内容</th></tr>
+<tr><td>核心</td><td>Python 3.10 + pandas/numpy + <strong>scikit-learn（Lasso/MLP，主力）</strong></td></tr>
+<tr><td>校正 / 验证 / 编码</td><td><code>pycombat</code> 或 <code>scanpy.pp.combat</code>（+<code>harmonypy</code>可选）；<code>gseapy</code> + MSigDB；RDKit</td></tr>
+<tr><td>可视化 / 外壳</td><td>matplotlib / seaborn（<code>umap-learn</code>可选）；<strong>CrewAI</strong></td></tr>
+<tr><td>算力</td><td><strong>CPU 足够</strong>（16GB内存）；需GPU用 Colab / Kaggle 免费 T4</td></tr>
+</table>
+<div class="tip"><strong>可复现设计：</strong>agent <strong>外壳用 CrewAI 定角色交接，内核用确定性 Python 脚本</strong>——别让 LLM 亲自算特征或调参，否则每次结果都变，汇报会翻车。</div>
+
+<h2>8. 汇报（12–14页）</h2>
+<ol>
+<li>任务理解（1p）　2. 数据+覆盖表（1–2p）　3. <strong>多智能体架构图（1–2p，务必放大）</strong>　4. 方法（2p）</li>
+<li>结果（3–4p）　6. 生物验证（1–2p）　7. <strong>局限与反思（1p，高分关键）</strong>　8. 分工与复现（1p）</li>
+</ol>
+<p style="margin:4px 0;"><strong>必放4图：</strong>①预测vs真实散点（并排shuffle负对照）　②基因R²分布直方图（MLP/Lasso/负对照）　③UMAP按批次着色（校正前后）　④未见vs已见扰动性能柱状图</p>
+
+<h2>9. 风险预防</h2>
+<table>
+<tr><th style="width:42%">风险</th><th>预防</th></tr>
+<tr><td>两模态对不齐</td><td>D3 出覆盖表，空了立刻换子集</td></tr>
+<tr><td>按样本切分致指标虚高</td><td><strong>按扰动切</strong>，写进评估脚本</td></tr>
+<tr><td>过校正抹掉生物信号</td><td>校正前后各跑一次检索 mAP 对照</td></tr>
+<tr><td>LLM 致结果不可复现</td><td>内核确定性脚本 + 固定种子</td></tr>
+<tr><td>C 过载 / 末期还在调参</td><td>A帮画图、B帮写生物章节；<strong>D19冻结代码</strong></td></tr>
+</table>
+
+<div class="warn"><strong>三个加分点：</strong>① 主动指出"批次分类准确率越低越好"（多数人会搞反）。② 诚实报告跨数据集迁移差并分析原因——负面结果讲透＝科研素养。③ 分层讨论"哪些靶点形态-基因匹配得上"，从跑通流程升级为生物学洞察。</div>
+
+</body>
+</html>

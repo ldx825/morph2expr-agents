@@ -1,0 +1,24 @@
+# Python 依赖（本项目在 .venv 中运行，解释器基于 conda 环境 EfficientWAM）
+# 安装：
+#   /home/dongxu/.conda/envs/EfficientWAM/bin/python -m venv --system-site-packages .venv
+#   .venv/bin/python -m pip install -r requirements.txt
+
+# ---- 核心（必需）----
+numpy>=1.24
+pandas>=2.0
+pyarrow>=14.0
+scipy>=1.10
+scikit-learn>=1.3
+matplotlib>=3.7
+seaborn>=0.13
+statsmodels>=0.14
+PyYAML>=6.0
+
+# ---- 推荐（缺失时流水线会自动降级）----
+umap-learn>=0.5      # 图3 UMAP；缺失时退回 PCA
+gseapy>=1.1          # 可选：更完整的 GSEA；缺失不影响主流程
+rdkit>=2023.9        # 化合物 Morgan 指纹；缺失时退回 ID 哈希编码
+
+# ---- 可选 ----
+# jupyter           # 交互式探索
+# openpyxl          # 导出 Excel 表格

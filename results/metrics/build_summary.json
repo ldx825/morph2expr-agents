@@ -1,0 +1,181 @@
+{
+  "datasets": [
+    "LINCS-Pilot1",
+    "TA-ORF-BBBC037-Rohban",
+    "LUAD-BBBC041-Caicedo"
+  ],
+  "n_common_features": 399,
+  "n_common_genes": 978,
+  "n_perturbations": 1861,
+  "coverage": [
+    {
+      "dataset": "LINCS-Pilot1",
+      "cell_line": "A549",
+      "n_replicates": 47329,
+      "n_features_morph": 879,
+      "n_perturbations_morph": 1560,
+      "n_perturbations_expr": 1240,
+      "n_perturbations_matched": 1230,
+      "match_rate": 0.7885
+    },
+    {
+      "dataset": "TA-ORF-BBBC037-Rohban",
+      "cell_line": "U2OS",
+      "n_replicates": 1826,
+      "n_features_morph": 941,
+      "n_perturbations_morph": 183,
+      "n_perturbations_expr": 147,
+      "n_perturbations_matched": 117,
+      "match_rate": 0.6393
+    },
+    {
+      "dataset": "LUAD-BBBC041-Caicedo",
+      "cell_line": "A549",
+      "n_replicates": 5869,
+      "n_features_morph": 754,
+      "n_perturbations_morph": 578,
+      "n_perturbations_expr": 528,
+      "n_perturbations_matched": 514,
+      "match_rate": 0.8893
+    }
+  ],
+  "qc": {
+    "LINCS-Pilot1": {
+      "dataset": "LINCS-Pilot1",
+      "n_replicates_raw": 52223,
+      "n_replicates_final": 47329,
+      "n_features_raw": 1783,
+      "n_features_final": 879,
+      "dropped_counts": {
+        "blocklist": 51,
+        "low_variance": 52,
+        "high_correlation": 801,
+        "outlier_replicates": 0
+      },
+      "outlier_stats": {
+        "n_outlier": 4894,
+        "n_total": 52223,
+        "pcs_used": 5,
+        "z_cut": 5.0
+      },
+      "n_perturbations": 1563,
+      "n_controls": 3230,
+      "n_missing_imputed": 138246,
+      "cell_lines": [
+        "A549"
+      ],
+      "batches": 136
+    },
+    "TA-ORF-BBBC037-Rohban": {
+      "dataset": "TA-ORF-BBBC037-Rohban",
+      "n_replicates_raw": 1920,
+      "n_replicates_final": 1826,
+      "n_features_raw": 1783,
+      "n_features_final": 941,
+      "dropped_counts": {
+        "blocklist": 51,
+        "low_variance": 105,
+        "high_correlation": 686,
+        "outlier_replicates": 0
+      },
+      "outlier_stats": {
+        "n_outlier": 94,
+        "n_total": 1920,
+        "pcs_used": 5,
+        "z_cut": 5.0
+      },
+      "n_perturbations": 185,
+      "n_controls": 289,
+      "n_missing_imputed": 0,
+      "cell_lines": [
+        "U2OS"
+      ],
+      "batches": 5
+    },
+    "LUAD-BBBC041-Caicedo": {
+      "dataset": "LUAD-BBBC041-Caicedo",
+      "n_replicates_raw": 6144,
+      "n_replicates_final": 5869,
+      "n_features_raw": 1783,
+      "n_features_final": 754,
+      "dropped_counts": {
+        "blocklist": 51,
+        "low_variance": 94,
+        "high_correlation": 884,
+        "outlier_replicates": 0
+      },
+      "outlier_stats": {
+        "n_outlier": 275,
+        "n_total": 6144,
+        "pcs_used": 5,
+        "z_cut": 5.0
+      },
+      "n_perturbations": 585,
+      "n_controls": 320,
+      "n_missing_imputed": 0,
+      "cell_lines": [
+        "A549"
+      ],
+      "batches": 16
+    }
+  },
+  "expr": {
+    "LINCS-Pilot1": {
+      "dataset": "LINCS-Pilot1",
+      "n_wells_raw": 27837,
+      "n_genes": 978,
+      "n_perturbations_raw": 1402,
+      "n_perturbations_final": 1240,
+      "n_perturbations_dropped_noise": 162,
+      "dropped_single_replicate": 0,
+      "median_replicate_spearman": 0.1458806588080167,
+      "n_control_wells": 1485,
+      "baseline_source": "control",
+      "n_extreme_clipped": 331212
+    },
+    "TA-ORF-BBBC037-Rohban": {
+      "dataset": "TA-ORF-BBBC037-Rohban",
+      "n_wells_raw": 729,
+      "n_genes": 978,
+      "n_perturbations_raw": 225,
+      "n_perturbations_final": 147,
+      "n_perturbations_dropped_noise": 78,
+      "dropped_single_replicate": 8,
+      "median_replicate_spearman": 0.15818762640175932,
+      "n_control_wells": 56,
+      "baseline_source": "control",
+      "n_extreme_clipped": 9479
+    },
+    "LUAD-BBBC041-Caicedo": {
+      "dataset": "LUAD-BBBC041-Caicedo",
+      "n_wells_raw": 4232,
+      "n_genes": 978,
+      "n_perturbations_raw": 528,
+      "n_perturbations_final": 528,
+      "n_perturbations_dropped_noise": 0,
+      "dropped_single_replicate": 0,
+      "median_replicate_spearman": 0.3893970275781141,
+      "n_control_wells": 8,
+      "baseline_source": "control",
+      "n_extreme_clipped": 68316
+    }
+  },
+  "encoding": {
+    "LINCS-Pilot1": {
+      "n_perturbations": 1230,
+      "compound_total": 1230,
+      "compound_with_smiles": 1230,
+      "compound_encoded_by": "morgan_rdkit"
+    },
+    "TA-ORF-BBBC037-Rohban": {
+      "n_perturbations": 117,
+      "genetic_total": 117,
+      "genetic_encoded_by": "gene_symbol_svd"
+    },
+    "LUAD-BBBC041-Caicedo": {
+      "n_perturbations": 514,
+      "genetic_total": 514,
+      "genetic_encoded_by": "gene_symbol_svd"
+    }
+  }
+}

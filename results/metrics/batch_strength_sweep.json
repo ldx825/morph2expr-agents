@@ -1,0 +1,42 @@
+[
+  {
+    "strength": 0.0,
+    "batch_accuracy": 0.7963333333333333,
+    "batch_chance": 0.009166666666666667,
+    "pert_retrieval": 0.0275,
+    "pert_retrieval_chance": 0.0003488553934246773,
+    "retrieval_fold_over_chance": 78.82922413793104
+  },
+  {
+    "strength": 0.25,
+    "batch_accuracy": 0.554,
+    "batch_chance": 0.009166666666666667,
+    "pert_retrieval": 0.024166666666666666,
+    "pert_retrieval_chance": 0.0003488553934246773,
+    "retrieval_fold_over_chance": 69.27416666666667
+  },
+  {
+    "strength": 0.5,
+    "batch_accuracy": 0.2435,
+    "batch_chance": 0.009166666666666667,
+    "pert_retrieval": 0.012333333333333333,
+    "pert_retrieval_chance": 0.0003488553934246773,
+    "retrieval_fold_over_chance": 35.353712643678165
+  },
+  {
+    "strength": 0.75,
+    "batch_accuracy": 0.034,
+    "batch_chance": 0.009166666666666667,
+    "pert_retrieval": 0.012666666666666666,
+    "pert_retrieval_chance": 0.0003488553934246773,
+    "retrieval_fold_over_chance": 36.309218390804595
+  },
+  {
+    "strength": 1.0,
+    "batch_accuracy": 0.0036666666666666666,
+    "batch_chance": 0.009166666666666667,
+    "pert_retrieval": 0.011666666666666667,
+    "pert_retrieval_chance": 0.0003488553934246773,
+    "retrieval_fold_over_chance": 33.44270114942529
+  }
+]

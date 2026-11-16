@@ -1,0 +1,15 @@
+{
+  "protocols": [
+    "perturbation_kfold",
+    "cluster_kfold",
+    "cross_dataset(LUAD-BBBC041-Caicedo)"
+  ],
+  "models": [
+    "ridge",
+    "lasso",
+    "mlp"
+  ],
+  "n_perturbations": 1861,
+  "n_features": 399,
+  "n_genes": 978
+}

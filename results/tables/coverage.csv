@@ -1,0 +1,4 @@
+﻿dataset,cell_line,n_replicates,n_features_morph,n_perturbations_morph,n_perturbations_expr,n_perturbations_matched,match_rate
+LINCS-Pilot1,A549,47329,879,1560,1240,1230,0.7885
+TA-ORF-BBBC037-Rohban,U2OS,1826,941,183,147,117,0.6393
+LUAD-BBBC041-Caicedo,A549,5869,754,578,528,514,0.8893
